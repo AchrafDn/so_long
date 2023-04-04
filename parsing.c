@@ -12,6 +12,31 @@
 
 #include "header.h"
 
+void	func_error(char *str)
+{
+	printf("Error\n%s", str);
+	exit(1);
+}
+
+void	format_ber(char *str)
+{
+	int	i;
+	int	v;
+
+	v = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '.' && str[i + 1] && str[i + 1] != '/')
+			v++;
+		i++;
+	}
+	if (v != 1)
+		func_error("format is not .ber");
+	if (ft_strcmp(str + ft_strlen(str) - 4, ".ber") != 0)
+		func_error("format is not .ber");
+}
+
 char	**dup_2darray(t_walls *p)
 {
 	int	i;
@@ -40,7 +65,7 @@ void	check_flood_fill(char **str)
 		j = 0;
 		while (str[i][++j])
 		{
-			if (str[i][j] == 'E' || str[i][j] == 'C' || str[i][j] == 'P')
+			if (str[i][j] == 'C' || str[i][j] == 'P' || str[i][j] == 'E')
 				func_error("You can't access all characters");
 		}
 	}

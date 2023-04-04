@@ -12,25 +12,6 @@
 
 #include "header.h"
 
-void	func_error(char *str)
-{
-	printf("Error\n%s", str);
-	exit(1);
-}
-
-void	check_new_line(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n' && str[i + 1] == '\0')
-			func_error("Last line is empty");
-		i++;
-	}
-}
-
 void	create2darray(t_walls *p)
 {
 	char	*str;
@@ -44,6 +25,7 @@ void	create2darray(t_walls *p)
 	while (str1 != NULL)
 	{
 		str = ft_strjoin(str, str1);
+		free(str1);
 		str1 = get_next_line(p->fd);
 		if (str1 && str1[0] == '\n')
 			func_error("Empty line");
@@ -55,6 +37,8 @@ void	create2darray(t_walls *p)
 			func_error("Last line is empty");
 	}
 	p->ptr = ft_split(str, '\n');
+	free(str);
+	free(str1);
 }
 
 void	rectangular(t_walls *p)
@@ -74,23 +58,68 @@ void	rectangular(t_walls *p)
 	}
 }
 
-void	format_ber(char *str)
+void	characters(t_walls *p, int i)
 {
-	int	len;
-	int	i;
-	int	v;
+	int	j;
 
-	v = 0;
-	len = ft_strlen(str);
-	i = 0;
-	while (str[i])
+	j = 0;
+	while (++j < p->w - 1)
 	{
-		if (str[i] == '.' && str[i + 1] && str[i + 1] != '/')
-			v++;
+		if (p->ptr[i][j] == 'P')
+		{
+			p->p_x = j;
+			p->p_y = i;
+			p->p++;
+		}
+		else if (p->ptr[i][j] == 'E')
+			p->e++;
+		else if (p->ptr[i][j] == 'C')
+			p->c++;
+		else if (p->ptr[i][j] != '0' && p->ptr[i][j] != '1')
+			func_error("Different character");
+	}
+}
+
+void	walls(t_walls *p)
+{
+	int	i;
+
+	i = 0;
+	while (i < p->w)
+	{
+		if (p->ptr[0][i] != '1' || p->ptr[p->h - 1][i] != '1')
+			func_error("Not valid map(walls)");
 		i++;
 	}
-	if (v != 1)
-		func_error("format is not .ber");
-	if (ft_strcmp(str + len - 4, ".ber") != 0)
-		func_error("format is not .ber");
+	i = 1;
+	p->e = 0;
+	p->p = 0;
+	p->c = 0;
+	while (i < p->h - 1)
+	{
+		if (p->ptr[i][0] != '1' || p->ptr[i][p->w - 1] != '1')
+			func_error("Not valid map(walls)");
+		characters(p, i);
+		i++;
+	}
+	if (p->e != 1 || p->p != 1 || p->c < 1)
+		func_error("Map not valid (Charachters)");
+}
+
+void	flood_fill(char **str, int x, int y)
+{
+	if (str[x][y] != 'C' && str[x][y] != '0' && str[x][y] != 'P'
+		&& str[x][y] != 'E')
+		return ;
+	if (str[x][y] == 'E')
+	{
+		str[x][y] = 'e';
+		return ;
+	}
+	str[x][y] = 'F';
+	flood_fill(str, x + 1, y);
+	flood_fill(str, x - 1, y);
+	flood_fill(str, x, y + 1);
+	flood_fill(str, x, y - 1);
+	return ;
 }

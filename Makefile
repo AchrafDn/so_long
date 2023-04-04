@@ -18,7 +18,7 @@ CC = cc
 CFILES = so_long.c \
 		parsing.c \
 		parssing_1utils.c \
-		parssing_2utils.c \
+		moves.c \
 		ft_split.c \
 		ft_strdup.c \
 		ft_strcmp.c \

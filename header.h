@@ -37,21 +37,38 @@ typedef struct walls
 	void	*window;
 	void	*image;
 	void	*floor;
-	void	*chara;
 	void	*colect;
+	void	*front;
+	void	*back;
+	void	*right;
+	void	*left;
+	int		start_on;
+	int		flesh_move;
+	int		f_x;
+	int		f_y;
+	int		index_character;
 }			t_walls;
-
-void		parsing(char **av, t_walls *p);
+/*execution*/
+int		put_image(t_walls *p, char *str, int x, int y);
+void	create_map(t_walls *p);
+/*moves*/
+void	ft_left(t_walls *p);
+void	ft_right(t_walls *p);
+void	ft_up(t_walls *p);
+void	ft_down(t_walls *p);
+int		key_hook(int keycode, t_walls *p);
+/*parsing*/
+void	parsing(char **av, t_walls *p);
 /*parssing utils*/
-void		func_error(char *str);
-void		create2darray(t_walls *ptr_str);
-void		rectangular(t_walls *ptr_str);
-void		format_ber(char *str);
+void	func_error(char *str);
+void	create2darray(t_walls *ptr_str);
+void	rectangular(t_walls *ptr_str);
+void	format_ber(char *str);
 /*parssing utils2*/
-void		walls(t_walls *ptr_str);
-void		flood_fill(char **str, int x, int y);
+void	walls(t_walls *ptr_str);
+void	flood_fill(char **str, int x, int y);
 /*function*/
-char		**ft_split(const char *s, char c);
-int			ft_strcmp(const char *f, const char *s);
-char		*ft_strdup(char *s1);
+char	**ft_split(const char *s, char c);
+int		ft_strcmp(const char *f, const char *s);
+char	*ft_strdup(char *s1);
 #endif
