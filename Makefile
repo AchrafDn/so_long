@@ -18,10 +18,13 @@ CC = cc
 CFILES = so_long.c \
 		parsing.c \
 		parssing_1utils.c \
-		moves.c \
+		create_map.c \
+		key_moves.c \
+		key_moves2.c \
 		ft_split.c \
 		ft_strdup.c \
 		ft_strcmp.c \
+		itoa.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 
@@ -30,10 +33,10 @@ OBJ = ${CFILES:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) -lmlx -framework OpenGL -framework appkit $(OBJ) -o ${NAME}
+	$(CC) -lmlx -framework OpenGL -framework appkit $(OBJ) -o ${NAME}
 
 .c.o:
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
