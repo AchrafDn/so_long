@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void	func_error(char *str)
 {
-	printf("Error\n%s", str);
+	ft_printf("Error\n%s", str);
 	exit(1);
 }
 

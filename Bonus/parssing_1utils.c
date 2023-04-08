@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void	create2darray(t_walls *p)
 {
@@ -103,7 +103,7 @@ void	walls(t_walls *p)
 		i++;
 	}
 	if (p->e != 1 || p->p != 1 || p->c < 1)
-		func_error("Map not valid (Charachters)");
+		func_error("Map not valid (Less Charachters)");
 }
 
 void	flood_fill(char **str, int x, int y)

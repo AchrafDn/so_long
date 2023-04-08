@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void	init_mlx(t_walls *p)
 {
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	t_walls	p;
 
 	if (ac != 2)
-		func_error("Arguments\n");
+		func_error("Arguments");
 	parsing(av, &p);
 	init_mlx(&p);
 	start_window(&p);

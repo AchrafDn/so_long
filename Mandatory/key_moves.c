@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void	ft_left(t_walls *p)
 {
@@ -20,7 +20,7 @@ void	ft_left(t_walls *p)
 	p->p_x -= 1;
 	if (p->ptr[p->p_y][p->p_x] == 'E' && p->c == 0)
 	{
-		printf("Number of moves %i\n", p->i + 1);
+		ft_printf("Number of moves %i\n", p->i + 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (p->ptr[p->p_y][p->p_x] == 'C')
@@ -31,9 +31,7 @@ void	ft_left(t_walls *p)
 		* 60);
 	p->i++;
 	p->n_moves = ft_itoa(p->i);
-	printf("Number of moves %s\n", p->n_moves);
-	put_image(p, "textures/walls.xpm", 0, 0);
-	mlx_string_put(p->mlx, p->window, 0, 0, 0xFFFFFF, p->n_moves);
+	ft_printf("Number of moves %s\n", p->n_moves);
 	free(p->n_moves);
 }
 
@@ -45,7 +43,7 @@ void	ft_right(t_walls *p)
 	p->p_x += 1;
 	if (p->ptr[p->p_y][p->p_x] == 'E' && p->c == 0)
 	{
-		printf("Number of moves %i\n", p->i + 1);
+		ft_printf("Number of moves %i\n", p->i + 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (p->ptr[p->p_y][p->p_x] == 'C')
@@ -56,9 +54,7 @@ void	ft_right(t_walls *p)
 		* 60);
 	p->i++;
 	p->n_moves = ft_itoa(p->i);
-	printf("Number of moves %s\n", p->n_moves);
-	put_image(p, "textures/walls.xpm", 0, 0);
-	mlx_string_put(p->mlx, p->window, 0, 0, 0xFFFFFF, p->n_moves);
+	ft_printf("Number of moves %s\n", p->n_moves);
 	free(p->n_moves);
 }
 
@@ -70,7 +66,7 @@ void	ft_up(t_walls *p)
 	p->p_y -= 1;
 	if (p->ptr[p->p_y][p->p_x] == 'E' && p->c == 0)
 	{
-		printf("Number of moves %i\n", p->i + 1);
+		ft_printf("Number of moves %i\n", p->i + 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (p->ptr[p->p_y][p->p_x] == 'C')
@@ -81,9 +77,7 @@ void	ft_up(t_walls *p)
 		* 60);
 	p->i++;
 	p->n_moves = ft_itoa(p->i);
-	printf("Number of moves %s\n", p->n_moves);
-	put_image(p, "textures/walls.xpm", 0, 0);
-	mlx_string_put(p->mlx, p->window, 0, 0, 0xFFFFFF, p->n_moves);
+	ft_printf("Number of moves %s\n", p->n_moves);
 	free(p->n_moves);
 }
 
@@ -95,7 +89,7 @@ void	ft_down(t_walls *p)
 	p->p_y += 1;
 	if (p->ptr[p->p_y][p->p_x] == 'E' && p->c == 0)
 	{
-		printf("Number of moves %i\n", p->i + 1);
+		ft_printf("Number of moves %i\n", p->i + 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (p->ptr[p->p_y][p->p_x] == 'C')
@@ -106,9 +100,7 @@ void	ft_down(t_walls *p)
 		* 60);
 	p->i++;
 	p->n_moves = ft_itoa(p->i);
-	printf("Number of moves %s\n", p->n_moves);
-	put_image(p, "textures/walls.xpm", 0, 0);
-	mlx_string_put(p->mlx, p->window, 0, 0, 0xFFFFFF, p->n_moves);
+	ft_printf("Number of moves %s\n", p->n_moves);
 	free(p->n_moves);
 }
 

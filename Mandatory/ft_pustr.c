@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_pustr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adadoun <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 23:52:09 by adadoun           #+#    #+#             */
-/*   Updated: 2023/03/21 23:52:11 by adadoun          ###   ########.fr       */
+/*   Created: 2023/04/08 07:31:19 by adadoun           #+#    #+#             */
+/*   Updated: 2023/04/08 07:31:20 by adadoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
-int	ft_strcmp(const char *f, const char *s)
+void	ft_putstr(char *c)
 {
 	size_t	i;
 
 	i = 0;
-	while (f[i])
+	if (!c)
+		return ;
+	while (c[i])
 	{
-		if (f[i] == s[i])
-			i++;
-		else
-			return ((unsigned char)f[i] - (unsigned char)s[i]);
+		write(1, &c[i], 1);
+		i++;
 	}
-	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 int	put_image(t_walls *p, char *str, int x, int y)
 {
@@ -78,7 +78,6 @@ void	create_map(t_walls *p)
 					* 60, p->p_y * 60);
 		}
 	}
-	mlx_string_put(p->mlx, p->window, 0, 0, 0xFFFFFF, "0");
 }
 
 int	handle_event(void)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 static int	nword(const char *s, char c)
 {
@@ -33,7 +33,7 @@ static int	nword(const char *s, char c)
 			nb = nb + 1;
 		}
 		else
-		i++;
+			i++;
 	}
 	return (nb);
 }

@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "gnl/get_next_line.h"
+# include "ft_printf.h"
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
